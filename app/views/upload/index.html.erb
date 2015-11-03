@@ -1,0 +1,7 @@
+<%= flash[:success] %>
+
+<%= form_tag(upload_index_path, method: :post, multipart: true) do%>
+  <%= label_tag :content, "Upload a new file: " %>
+  <%= file_field_tag :content %>
+  <%= submit_tag "Upload" %>
+<% end %>
