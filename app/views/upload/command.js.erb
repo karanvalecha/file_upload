@@ -1,0 +1,5 @@
+$('#result').empty();
+<% @file_contents.split(/\n/).each do |f| %>
+	$('#result').append('<li> <%= escape_javascript(f) %> </li>');
+<% end %>
+$('#result_file_name').html('<%= escape_javascript(@file_name) %>');
