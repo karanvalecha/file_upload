@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post "create_user" => "users#create"
+  get 'signup' => "users#new"
   resources :upload
   root to: 'upload#index'
   get "file" => 'upload#file'
