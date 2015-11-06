@@ -1,4 +1,4 @@
-class UploadController < ApplicationController
+class UploadsController < ApplicationController
   def index
     @files ||= Dir.entries("public/uploads").select {|f| !File.directory? f}
     # debugger
@@ -8,17 +8,17 @@ class UploadController < ApplicationController
     content = params[:content].read
     name = params[:content].original_filename
 
-    uploaded_file = Upload.create!(content: content) 
+    # uploaded_file = Upload.create!(content: content) 
 
-    # Open a new stream and write to the file.
-    File.open("#{Rails.root}/public/uploads/#{name}", "w") do |file| 
-      begin
-        file.write(content)
-      ensure
-        file.close
-      end
-    end
-    flash[:success] = "The file was uploaded succesfully."
+    # # Open a new stream and write to the file.
+    # File.open("#{Rails.root}/public/uploads/#{name}", "w") do |file| 
+    #   begin
+    #     file.write(content)
+    #   ensure
+    #     file.close
+    #   end
+    # end
+    # flash[:success] = "The file was uploaded succesfully."
     redirect_to root_url
   end
 

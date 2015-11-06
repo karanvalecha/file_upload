@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem "jquery-fileupload-rails"
+
 # Add bootstrap styling
 gem 'bootstrap-sass', '~> 3.3.5'
 

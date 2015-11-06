@@ -1,11 +1,11 @@
-<%= flash[:success] %>
-<%= form_tag(upload_index_path, method: :post, multipart: true, class: "well") do%>
+<%= form_tag(uploads_path, method: :post, multipart: true, class: "wells") do%>
   <%= label_tag :content, "Upload a new file: " %>
-  <%= file_field_tag :content %>
-  <%= submit_tag "Upload", class: 'btn btn-primary' %>
+  <%= file_field_tag :content, multiple: true, id: "fileUpload" %>
+  <% submit_tag "Upload", class: 'btn btn-primary' %>
 <% end %>
 
-<div class="container">
+
+<div>
   <h4>Available Files</h4>
   <%= form_tag(file_path, method: :get, remote: true, class: "jumbotron") do %>
     <% @files.each do |file| %>
@@ -27,12 +27,13 @@
   <hr/>
 </div>
 
-<div class="container-fluid">
+<div>
   <%= form_tag(command_path, method: :post, remote: true) do%>
     <% @files.each do |file| %>
       <%= radio_button_tag(:choose, "#{file}") %>
       <%= label_tag "#{file}" %>
-    <% end %>    
+    <% end %>
+    <div id="dropzone" class="fade well">Drop files here </div>
     <%= text_field_tag :command, nil, placeholder: "s, r, i ,d" %>
     <%= submit_tag "Perform Action", class: "btn btn-warning" %>
   <% end %>

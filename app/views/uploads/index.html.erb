@@ -1,0 +1,15 @@
+<div id="progress">
+    <div class="bar" style="width: 0%;"></div>
+</div>
+
+<div class="row">
+<div style="height: 50%; border: 1px solid black;" class="col-sm-12">lorem</div>
+
+<div class="col-sm-3"><div id="dropzone" class="fade well">Drop files here </div></div>
+<div class="col-sm-9">
+<%= form_tag(command_path, method: :post, remote: true) do%>
+  <%= text_field_tag :command, nil, placeholder: "s, r, i ,d", style: "width: 100%;" %>
+  <%= submit_tag "Perform Action", class: "btn btn-warning", style: "display: none;"  %>
+<% end %>
+</div>
+</div>
