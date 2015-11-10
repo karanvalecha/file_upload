@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 
-  include SessionsHelper
+  before_action :already_logged_in!, only: :new
 
   def new
     @user = User.new unless logged_in_user?
@@ -22,6 +22,8 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:current_user_id] = nil
+    @current_user = nil
+    flash[:warning] = "Logged Out!"
     redirect_to root_url
   end
 end

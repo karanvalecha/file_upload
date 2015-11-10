@@ -1,4 +1,6 @@
 class UploadsController < ApplicationController
+  include SessionsHelper
+
   def index
     @files ||= Dir.entries("public/uploads").select {|f| !File.directory? f}
     # debugger

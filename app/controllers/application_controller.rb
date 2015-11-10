@@ -6,4 +6,6 @@ class ApplicationController < ActionController::Base
     return unless session[:user_id]
     @current_user ||= User.find(session[:current_user_id])
   end
+
+  include ApplicationHelper
 end

@@ -30,3 +30,36 @@
     transition: all 1s ease-out;
     opacity: 1;
 }
+
+#commandRow{
+  position: fixed;
+  width: 83.33%;
+  bottom: 1%;
+}
+
+#commandRow.toggle{
+	width: 100%;
+}
+
+#commandRow > input{
+	width: 80%;
+	margin: auto;
+	float: left;
+    font-weight: bolder;
+}
+
+#commandRow > div {
+	width: 15%;
+	float: right;
+	margin-right: 4%;
+	font-size: 2.2rem;
+	padding: 0;
+}
+
+#result {
+    margin-top: 0;
+    margin-bottom: 10%;
+    min-height: 400px;
+    min-width: 400px;
+    padding: 10px !important;
+}

@@ -1,0 +1,11 @@
+<% flash.each do |key, val| %>
+  <%= content_tag :div, class: "alert alert-#{key}" do %>
+    <% if val.is_a? String %>
+      <%= content_tag :h4, val  %>
+    <% else %>
+      <% val.each do |k,v| %>
+        <%= content_tag(:h4, "#{k.capitalize}: #{v.each{|c| c.capitalize!}.join(" ... ")}.") %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

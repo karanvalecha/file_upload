@@ -9,6 +9,11 @@ class User < ActiveRecord::Base
 
 	has_secure_password
 
+
+  def to_s
+    name
+  end
+
 private
 
 	def downcase_email
@@ -18,6 +23,5 @@ private
 	def create_folder
 		dir = UPLOAD_PATH + self.id
 		FileUtils.mkdir_p(dir) unless File.directory?(dir)
-		debugger
 	end
 end
