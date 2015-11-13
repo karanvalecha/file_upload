@@ -16,20 +16,23 @@
   <div class="row">
     <div class="col-sm-3 col-md-2 sidebar">
     <h4><i class="fa fa-files-o"> Uploads</i></h4>
-    <% if current_user().nil? %>
-      <%= link_to "Log In", login_path, class: 'btn btn-primary btn-block' %>
-      <hr>
-      <%= link_to "Sign Up", signup_path, class: "btn btn-success btn-block" %>
-      <hr>
-    <% else %>
-      <%= render 'layouts/logged_in_content' %>
-    <% end %>
+    <ul class="nav nav-sidebar" id="fileItems">
+      <% if current_user().nil? %>
+        <%= link_to "Log In", login_path, class: 'btn btn-primary btn-block' %>
+        <hr>
+        <%= link_to "Sign Up", signup_path, class: "btn btn-success btn-block" %>
+        <hr>
+      <% else %>
+        <% @files.each do |file| %>
+          <%= render 'layouts/logged_in_content', file: file %>
+        <% end %>
+      <% end %>
+    </ul>
       <h4><i class="fa fa-file-code-o"> Commands</i></h4>
 
       <h5><em class="label label-default"> R "Hello" "Hey there"</em> <h5/>
       <h5><em class="label label-default"> I 12 "Hey there"</em> <h5/>
       <h5><em class="label label-default"> REV 4 </em> <h5/>
-      <h5><em class="label label-default"> REV 4 "HO"</em> <h5/>
       <h5><em class="label label-default"> DEL 4 "HO"</em> <h5/>
       <h5><em class="label label-default"> DEL 4</em> <h5/>
     </div>

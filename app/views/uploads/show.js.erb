@@ -1,0 +1,7 @@
+$('#result').empty();
+$("#<%= @file.id %>").addClass('active').siblings().removeClass('active');
+$("#resultTitle").html('<%= @file.name %>')
+$('#result').append('<ol>')
+<% @file_contents.each do |f| %>
+$('#result > ol').append('<li><%= j(f.html_safe) %></li>')
+<% end %>

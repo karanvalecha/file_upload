@@ -18,24 +18,40 @@
 @import "bootstrap";
 @import "font-awesome";
 
+#fileItems{
+    li.toggle {
+    height: 0;
+    width: 0;
+    margin: 0;
+    padding: 0;
+  }
+}
+
 #fileItems {
+  max-height: 50%;
+  overflow-x: auto;
+  overflow-y: hidden;
+
   li.active{
     &:hover{
       a:first-child {
-          background-color: #f5f5f5;
           color: blue;
         }
       }
   }
+
   max-height: 60%;
   li {
     display: flex;
     justify-content: space-between;
 
     a {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
       // width: 100%;
       &:first-child {
-        flex-grow: 10;
+        flex-grow: 1;
       }
 
       &:nth-child(2) {
@@ -46,8 +62,9 @@
     }
 
     &:hover {
+      border: 1px dotted blue;
       a{
-        background: none;
+        opacity: 0.5;
         color: blue;
       }
       a:nth-child(2) {
@@ -76,7 +93,7 @@
  		max-height: 50px;
  	}
  }
-.sidebar, .icon-bar {
+.sidebar, .icon-bar, #fileItems, #fileItems>li.toggle {
   -webkit-transition: all 0.3s linear;
   -moz-transition: all 0.3s linear;
   -o-transition: all 0.3s linear;
@@ -167,6 +184,7 @@ body {
 /* Hide for mobile, show later */
 @media (min-width: 768px) {
   .sidebar {
+    overflow: hidden;
     max-width: 16.67%;
     position: fixed;
     top: 51px;

@@ -3,15 +3,15 @@
 </div>
 
 <div class="row">
-<!-- <div style="height: 50%; border: 1px solid black;" class="col-sm-12">lorem</div> -->
 
-<div id="result" ondrop="drop(event)" ondragover="allowDrop(event)" class="jumbotron">
+  <h3 id="resultTitle"></h3>
+<div id="result" class="jumbotron">
 </div>
+  
 
 <div hidden>
-<%= form_tag(command_path, method: :post, remote: true) do%>
-  <%= text_field_tag :command, nil, placeholder: "s, r, i ,d", style: "width: 100%;" %>
-  <%= submit_tag "Perform Action", class: "btn btn-warning", style: "display: none;"  %>
+<%= form_tag(uploads_path, method: :post, multipart: true, class: "wells") do%>
+  <%= file_field_tag :file, multiple: true, id: "fileUpload" %>
 <% end %>
 </div>
 

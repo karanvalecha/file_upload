@@ -1,10 +1,4 @@
-<ul class="nav nav-sidebar" id="fileItems">
-  <li class="active"><a style="overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;" href="#" class="fa fa-file-text-o"> File 1 kkkkkkkkkkkkkk </a>
-  <a href="#"> <i class="fa fa-trash-o"></i> </a></li>
-  <li><a href="#" class="fa fa-file-text-o"> File 2</a>  <a href="#"> <i class="fa fa-trash-o"></i> </a></li>
-  <li><a href="#" class="fa fa-file-text-o"> File 3</a>  <a href="#"> <i class="fa fa-trash-o"></i> </a></li>
-  <li><a href="#" class="fa fa-file-text-o"> File 4</a>  <a href="#"> <i class="fa fa-trash-o"></i> </a></li>
-</ul>
-
+<li id="<%= file.id %>">
+  <%= link_to "#{fa_icon('file-text-o')} #{file.name}".html_safe, file, remote: true, draggable: false, title: file.name %>
+  <%= link_to fa_icon('trash-o').html_safe, file, method: :delete, remote: true, data: {confirm: "Delete #{file.name}?"} %>
+</li>

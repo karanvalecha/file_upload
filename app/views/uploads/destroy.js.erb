@@ -1,0 +1,8 @@
+setTimeout(function() {
+  $("#<%= @file.id %>").slideUp();
+    setTimeout(function() {
+      $("#<%= @file.id %>").remove();
+    }, 1000);
+}, 300);
+
+$('#resultTitle, #result').empty();

@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
-	has_many :uploads
+
+	attr_reader :get_path
+
+	has_many :uploads, dependent: :destroy
 	validates :name, presence: true, length: { minimum: 3, maximum: 50 }
 	validates :email, presence: true, length: {	minimum: 6, maximum: 255 }
 
@@ -14,15 +17,19 @@ class User < ActiveRecord::Base
   def to_s
     name
   end
+  
+	def get_path
+		"#{UPLOAD_PATH}#{id}/"
+	end
 
 private
+
 
 	def downcase_email
 		self.email.downcase!
 	end
 
 	def create_folder
-		dir = UPLOAD_PATH + self.id.to_s
-		FileUtils.mkdir_p(dir) unless File.directory?(dir)
+		FileUtils.mkdir_p(get_path) unless File.directory?(get_path)
 	end
 end
