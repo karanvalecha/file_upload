@@ -4,7 +4,7 @@ class UploadsController < ApplicationController
   before_action :logged_in_users_only, except: :index
 
   def index
-    @files = current_user().uploads
+    @files = current_user().uploads if current_user()
     # debugger
   end
 

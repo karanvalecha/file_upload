@@ -1,9 +1,5 @@
 module ApplicationHelper
 
-  def login(id)
-    session[:current_user_id] = id || nil
-  end
-
   def current_user
     return nil unless session[:current_user_id]
     @current_user ||= User.find_by(id: session[:current_user_id])

@@ -27,4 +27,9 @@ class SessionsController < ApplicationController
     redirect_to root_url
   end
 
+private
+  def login(id)
+    session[:current_user_id] = id || nil
+  end
+
 end

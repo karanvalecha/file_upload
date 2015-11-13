@@ -19,6 +19,14 @@
 @import "font-awesome";
 
 #fileItems {
+  li.active{
+    &:hover{
+      a:first-child {
+          background-color: #f5f5f5;
+          color: blue;
+        }
+      }
+  }
   max-height: 60%;
   li {
     display: flex;
@@ -32,10 +40,16 @@
 
       &:nth-child(2) {
         display: none;
+        padding: auto 0;
+        margin: auto 0;
       }
     }
 
     &:hover {
+      a{
+        background: none;
+        color: blue;
+      }
       a:nth-child(2) {
         display: block;
         &:hover{
