@@ -26,4 +26,5 @@ class SessionsController < ApplicationController
     flash[:warning] = "Logged Out!"
     redirect_to root_url
   end
+
 end

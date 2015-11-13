@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# let's use an awesome gem
+gem 'font-awesome-rails'
+
 gem "jquery-fileupload-rails"
 
 # Add bootstrap styling

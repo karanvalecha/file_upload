@@ -7,8 +7,9 @@ class UsersController < ApplicationController
 
   def create
     user = User.create(user_params)
-    
+
     if user.save
+      session[:current_user_id] = user.id
       redirect_to root_url
     else
       flash[:danger] = user.errors.messages

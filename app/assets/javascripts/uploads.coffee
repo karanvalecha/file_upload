@@ -24,36 +24,15 @@ jQuery ->
 			data.context.text "Failed #{data.files[0].name} ✗"
 			$("#progress > .bar").width(0)
 
-		progress: (e, data) -> 
+		progress: (e, data) ->
 	    progress = parseInt(data.loaded / data.total * 100, 10)
 	    $('#progress .bar').css('width', progress + '%')
 
-  
-	$(document).bind 'dragover', (e) ->
-	  dropZone = $('#dropzone')
-	  timeout = window.dropZoneTimeout
-	  if !timeout
-	    dropZone.addClass 'in'
-	  else
-	    clearTimeout timeout
-	  found = false
-	  node = e.target
-	  loop
-	    if node == dropZone[0]
-	      found = true
-	      break
-	    node = node.parentNode
-	    unless node != null
-	      break
-	  if found
-	    dropZone.addClass 'hover'
-	  else
-	    dropZone.removeClass 'hover'
-	  window.dropZoneTimeout = setTimeout((->
-	    window.dropZoneTimeout = null
-	    dropZone.removeClass 'in hover'
-	    return
-	  ), 100)
-	  return
-$(document).bind 'drop dragover', (e) ->
-  e.preventDefault()
+	@element = $('#result')
+	@element.css('background-size', '100% 100%')
+	@element.css('background-repeat', 'no-repeat')
+
+	$('.main').on 'dragover', (e) =>
+		@element.css('background-image', 'url("http://uxrepo.com/static/icon-sets/typicons/svg/upload-cloud.svg")')
+	$('.main').on 'dragleave drop', (e) =>
+		@element.css("background-image", "none")

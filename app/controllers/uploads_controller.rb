@@ -1,8 +1,10 @@
 class UploadsController < ApplicationController
   include SessionsHelper
 
+  before_action :logged_in_users_only, except: :index
+
   def index
-    @files ||= Dir.entries("public/uploads").select {|f| !File.directory? f}
+    @files = current_user().uploads
     # debugger
   end
 
@@ -10,10 +12,10 @@ class UploadsController < ApplicationController
     content = params[:content].read
     name = params[:content].original_filename
 
-    # uploaded_file = Upload.create!(content: content) 
+    # uploaded_file = Upload.create!(content: content)
 
     # # Open a new stream and write to the file.
-    # File.open("#{Rails.root}/public/uploads/#{name}", "w") do |file| 
+    # File.open("#{Rails.root}/public/uploads/#{name}", "w") do |file|
     #   begin
     #     file.write(content)
     #   ensure
@@ -21,13 +23,13 @@ class UploadsController < ApplicationController
     #   end
     # end
     # flash[:success] = "The file was uploaded succesfully."
-    redirect_to root_url
+    # redirect_to root_url
   end
 
   def file
     respond_to { |format| format.js {} }
     @file_name = params[:choose]
-    File.open("#{Rails.root}/public/uploads/#{@file_name}", "r") do |file| 
+    File.open("#{Rails.root}/public/uploads/#{@file_name}", "r") do |file|
       begin
         @file_contents = file.read
       ensure
@@ -56,7 +58,7 @@ class UploadsController < ApplicationController
       {at_line: @at_line, word1: @word1, word2: @word2})
     end
 
-    File.open("#{Rails.root}/public/uploads/#{@file_name}", "r") do |file| 
+    File.open("#{Rails.root}/public/uploads/#{@file_name}", "r") do |file|
       begin
         @file_contents = file.read
       ensure
@@ -73,7 +75,7 @@ private
     puts "i called"
     word = args[:word1] + "\n"
     at_line = args[:at_line]
-    
+
     tempfile=File.open("file.tmp", 'w')
     f=File.new("#{Rails.root}/public/uploads/#{@file_name}")
 
@@ -163,4 +165,11 @@ private
     FileUtils.mv("file.tmp", "#{Rails.root}/public/uploads/#{@file_name}")
   end
 
+
+  def logged_in_users_only
+    unless logged_in_user?
+      flash[:danger] = "Log in to continue"
+      redirect_to login_path
+    end
+  end
 end

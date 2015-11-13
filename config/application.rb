@@ -22,5 +22,16 @@ module FileUploaderExcercise
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # My configurations
+    config.after_initialize do
+      FileUtils.mkdir_p(UPLOAD_PATH) unless File.directory?(UPLOAD_PATH)
+      begin
+        User.pluck(:id).each do |id|
+          FileUtils.mkdir_p(UPLOAD_PATH + id.to_s) unless File.directory?(UPLOAD_PATH + id.to_s)
+        end
+      rescue
+      end
+    end
   end
 end

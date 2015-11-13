@@ -11,17 +11,19 @@
           <span class="caret"></span>
         </a>
       </button>
-      <a class="navbar-brand" style= href="/">
+      <a class="navbar-brand" href="/">
       File Upload Project
       </a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-      	<li id="user_name"><%= link_to current_user() ? "Hello, #{current_user().to_s.capitalize}!" : "Hello, Guest!", nil, class: "badge badge-primary" %></li>
-       <% if session[:current_user_id] %>
+      	<li class="active"><%= link_to current_user() ? "Hello, #{current_user().to_s.capitalize}!" : "Hello, Guest!", nil %></li>
+       <% if current_user() %>
 					<li> <%= link_to "Logout", logout_path, method: :delete %> </li>
 				<% else %>
-					<li> <%= link_to "Login", login_path %> </li>
+					<li> <%= link_to "Log in", login_path %> </li>
+          <li><a>|</a></li>
+          <li> <%= link_to "Sign up", signup_path %> </li>
        <% end %>
       </ul>
     </div>

@@ -16,10 +16,34 @@
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 
 #fileItems {
-    min-height: 40%;
-    max-height: 50%;
+  max-height: 60%;
+  li {
+    display: flex;
+    justify-content: space-between;
+
+    a {
+      // width: 100%;
+      &:first-child {
+        flex-grow: 10;
+      }
+
+      &:nth-child(2) {
+        display: none;
+      }
+    }
+
+    &:hover {
+      a:nth-child(2) {
+        display: block;
+        &:hover{
+          color: tomato;
+        }
+      }
+    }
+  }
 }
 
 /*
@@ -27,12 +51,7 @@
  */
 
 
-#user_name > a {
-  color: whitesmoke;
-}
-
 .navbar-brand{
-	margin-left: 10px !important;
 	color: #ddd !important;
 	font-weight: bolder !important;
 }

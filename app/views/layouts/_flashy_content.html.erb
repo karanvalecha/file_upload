@@ -4,7 +4,7 @@
       <%= content_tag :h4, val  %>
     <% else %>
       <% val.each do |k,v| %>
-        <%= content_tag(:h4, "#{k.capitalize}: #{v.each{|c| c.capitalize!}.join(" ... ")}.") %>
+        <%= content_tag(:h4, "#{k.capitalize}: #{v.each{|c| c.capitalize!}.join(" & ")}.") %>
       <% end %>
     <% end %>
   <% end %>
