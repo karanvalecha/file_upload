@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in_user?
-    return nil unless session[:current_user_id]
+    session[:current_user_id].present?
   end
 
   def already_logged_in!

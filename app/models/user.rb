@@ -15,7 +15,6 @@ class User < ActiveRecord::Base
 
 	has_secure_password # this will validate password & confirmation
 
-
   def to_s
     name
   end

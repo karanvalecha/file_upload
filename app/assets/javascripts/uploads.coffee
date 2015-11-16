@@ -40,15 +40,15 @@ jQuery ->
 		@element.css("background-image", "none")
 
 	$('#commandRow > input').on 'keyup', (e) ->
-			if(e.which == 13)
-				@command = e.target.value
-				if @command != '' || undefined
-					$('#result').empty()
-				id = $('#fileItems > li.active').attr('id')
-				$.ajax(
-	        type: 'POST'
-	        url: "/uploads/#{id}"
-	        dataType: "script"
-	        data: (_method:'PATCH', command: @command)).error () ->
-	          $('#result').html("ERROR")
+		if(e.which == 13)
+			@command = e.target.value
+			if @command != '' || undefined
+				$('#result').empty()
+			id = $('#fileItems > li.active').attr('id')
+			$.ajax(
+        type: 'POST'
+        url: "/uploads/#{id}"
+        dataType: "script"
+        data: (_method:'PATCH', command: @command)).error () ->
+          $('#result').html("ERROR")
 
