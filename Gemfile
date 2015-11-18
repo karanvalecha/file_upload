@@ -1,5 +1,14 @@
 source 'https://rubygems.org'
 
+
+gem "haml-rails"
+ 
+group :test do
+  gem 'memfs' # fake the file system
+end
+
+gem 'faker' # Let's fake it
+
 # let's use an awesome gem
 gem 'font-awesome-rails'
 
@@ -42,6 +51,14 @@ gem 'bcrypt', '~> 3.1.7'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+
+  gem 'rack_session_access'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'guard-rspec'
+  gem 'database_cleaner'
+  gem 'capybara'
+  gem 'selenium-webdriver'
 end
 
 group :development do

@@ -1,0 +1,9 @@
+#progress
+  .bar{:style => "width: 0%;"}
+.row
+  %h3#resultTitle
+  #result.jumbotron
+  %div
+    = form_tag(uploads_path, method: :post, multipart: true) do
+      = file_field_tag :file, multiple: true, id: "fileUpload"
+  = render "footer"

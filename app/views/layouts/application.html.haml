@@ -1,0 +1,47 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title FileUploader
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+  %body
+    = render 'layouts/header'
+    %div
+      .container-fluid
+        .row
+          .col-sm-3.col-md-2.sidebar
+            %h4
+              %i.fa.fa-files-o Uploads
+            %ul#fileItems.nav.nav-sidebar
+              - if current_user().nil?
+                = link_to "Log In", login_path, class: 'btn btn-primary btn-block'
+                %hr/
+                = link_to "Sign Up", signup_path, class: "btn btn-success btn-block"
+                %hr/
+              - else
+                - @files.each do |file|
+                  = render 'layouts/logged_in_content', file: file
+            %h4
+              %i.fa.fa-file-code-o Commands
+            %h5
+              %em.label.label-default R "Hello" "Hey there"
+              %h5
+              %h5
+                %em.label.label-default I 12 "Hey there"
+                %h5
+                %h5
+                  %em.label.label-default REV 4
+                  %h5
+                  %h5
+                    %em.label.label-default DEL 4 "HO"
+                    %h5
+                    %h5
+                      %em.label.label-default DEL 4
+                      %h5
+          .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main.toggle
+            = render 'layouts/flashy_content'
+            = yield

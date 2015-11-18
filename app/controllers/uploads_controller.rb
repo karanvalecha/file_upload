@@ -8,7 +8,6 @@ class UploadsController < ApplicationController
 
   def index
     @files = current_user.uploads if current_user
-    # debugger
   end
 
   def create

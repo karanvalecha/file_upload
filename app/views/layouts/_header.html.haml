@@ -1,0 +1,26 @@
+%nav.navbar.navbar-inverse.navbar-fixed-top
+  .container-fluid
+    %button#sidebarButton.nav
+      %span#bar1.icon-bar.toggle
+      %span#bar2.icon-bar.toggle
+      %span#bar3.icon-bar.toggle
+    .navbar-header
+      %button.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#navbar", "data-toggle" => "collapse", :type => "button"}
+        %a
+          Menu
+          %span.caret
+      %a.navbar-brand{:href => "/"}
+        File Upload Project
+    #navbar.navbar-collapse.collapse
+      %ul.nav.navbar-nav.navbar-right
+        %li.active= link_to current_user() ? "Hello, #{current_user().to_s.capitalize}!" : "Hello, Guest!", nil
+        - if current_user()
+          %li
+            = link_to "Logout", logout_path, method: :delete
+        - else
+          %li
+            = link_to "Log in", login_path
+          %li
+            %a |
+          %li
+            = link_to "Sign up", signup_path

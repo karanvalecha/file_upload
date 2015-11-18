@@ -1,0 +1,3 @@
+%li{:id => file.id}
+  = link_to "#{fa_icon('file-text-o')} #{file.name}".html_safe, file, remote: true, draggable: false, title: file.name
+  = link_to fa_icon('trash-o').html_safe, file, method: :delete, class: 'delete', remote: true

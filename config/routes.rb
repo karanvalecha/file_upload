@@ -7,8 +7,6 @@ Rails.application.routes.draw do
   delete "logout" => 'sessions#destroy'
   post "create_user" => "users#create"
   get 'signup' => "users#new"
-  get "file" => 'uploads#file'
-  post "command" => 'uploads#command'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

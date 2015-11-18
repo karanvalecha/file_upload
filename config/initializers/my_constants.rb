@@ -1,1 +1,1 @@
-UPLOAD_PATH = "#{Rails.root}/public/uploads/"
+UPLOAD_PATH = "#{Rails.root}/public/uploads/#{Rails.env}/"

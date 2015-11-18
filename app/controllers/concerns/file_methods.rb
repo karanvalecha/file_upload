@@ -4,7 +4,7 @@ module FileMethods
   # def i(word, at_line=0)
   def i(args = {})
     puts "i called"
-    word = args[:word1] + "\n"
+    word = args[:word1] + "\n" if args[:word1]
     at_line = args[:at_line]
 
     tempfile=File.open("file.tmp", 'w')
@@ -37,10 +37,9 @@ module FileMethods
     tempfile = File.open("file.tmp", 'w')
     f=File.new(args[:file_path])
 
-    if at_line == 0
+    if at_line == 0 && word1 && word2
       f.each { |line| tempfile << line.gsub(/#{word1}/i, word2) }
     else
-      at_line = at_line
       f.each.with_index do |line, index|
         index+1 == at_line ? tempfile << line.gsub(/#{word1}/i, word2) : tempfile << line
       end
