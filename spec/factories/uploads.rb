@@ -2,6 +2,6 @@ require 'faker'
 FactoryGirl.define do
   factory :upload do
     user
-    name "samples.txt"
+    name "sample.txt"
   end
 end
